@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="main.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="header-container">
+        <img src="logo.png" alt="Website Logo" class="logo">
+        <img src="titlemain.png" alt="The Dangers Of Underage People on Social Media" class="title">
+    </div>
+
+    <!-- Image Buttons -->
+    <a href="index.html">
+        <button class="image-button">
+            <img src="homen.svg" alt="Button Image">
+        </button>
+    </a>
+    <a href="page2.html">
+        <button class="image-button">
+            <img src="impact.svg" alt="Button Image 2">
+        </button>
+    </a>
+    <a href="page3.html">
+        <button class="image-button">
+            <img src="blues.svg" alt="Button Image 3">
+        </button>
+    </a>
+    <a href="page4.html">
+        <button class="image-button">
+            <img src="prevention.svg" alt="Button Image 4">
+        </button>
+    </a>
+
+    <a href="index.html">
+        <button class="image-button exit-button">
+            <img src="exit.svg" alt="Exit Button">
+        </button>
+    </a>
+
+    <a href="https://tinyurl.com/48kktnnu">
+        <button class="image-button link-button">
+            <img src="linktolink.png" alt="Link button">
+        </button>
+    </a>
+
+
+    <div class="graph-description-aligned">
+        <p>
+            This graph displays data on grooming cases reported from 2020 to 2024 on platforms like Instagram, Snapchat, TikTok, Discord, and Roblox.
+            It highlights how some platforms consistently show higher risk for minors over the years.
+        </p>
+    </div>
+
+
+    <!-- Chart Section -->
+    <div class="graph-wrapper">
+        <div class="graph-container">
+        <div class="controls">
+        <label for="yearSelect">Select Year:</label>
+        <select id="yearSelect">
+        <option value="2020">2020</option>
+        <option value="2021">2021</option>
+        <option value="2022">2022</option>
+        <option value="2023">2023</option>
+        <option value="2024">2024</option>
+        </select>
+        </div>
+        <canvas id="groomingChart" width="2000" height="1200"></canvas>
+        </div>
+        </div>
+
+        <script>
+            const dataByYear = {
+            "2020": [2000, 1800, 1500, 1200, 900, 800, 700],
+            "2021": [2500, 2200, 1800, 1500, 1100, 1000, 900],
+            "2022": [3000, 2600, 2100, 1800, 1300, 1200, 1100],
+            "2023": [3500, 3000, 2400, 2100, 1500, 1400, 1300],
+            "2024": [4000, 3400, 2700, 2400, 1700, 1600, 1500]
+            };
+            
+            const labels = ['Instagram', 'Snapchat', 'Roblox', 'TikTok', 'Discord'];
+            
+            const ctx = document.getElementById('groomingChart').getContext('2d');
+            let groomingChart = new Chart(ctx, {
+            type: 'bar',
+            data: {
+            labels: labels,
+            datasets: [{
+            label: 'Reported Grooming Cases',
+            data: dataByYear[2020], // Default to 2020
+            backgroundColor: ['#007bff', '#66b2ff', '#3399ff', '#4da6ff', '#80c1ff'],
+            borderColor: '#004080',
+            borderWidth: 1
+            }]
+            },
+            options: {
+            responsive: true,
+            scales: {
+            y: {
+            beginAtZero: true
+            }
+            }
+            }
+            });
+            
+            document.getElementById('yearSelect').addEventListener('change', function () {
+            const selectedYear = this.value;
+            groomingChart.data.datasets[0].data = dataByYear[selectedYear];
+            groomingChart.update();
+            });
+            </script>
+            
+
+</body>
+</html>
+
+
+
+
+
